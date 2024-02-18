@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Simple Executor (HTML)</title>
+<p>Made By @_unknowndream_ (YT) </p>
+<style>
+/* Improved styling for a more polished appearance */
+body {
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #e7e7e7;
+}
+
+#editor {
+  width: 350px;
+  height: 250px;
+  font-size: 16px;
+  padding: 10px;
+  border: 5px solid #2f00ff;
+  border-radius: 5px;
+  resize: none;
+}
+
+#preview {
+  width: 350px;
+  height: 200px;
+  border: 5px solid #0059ff;
+  border-radius: 5px;
+  padding: 25px;
+  overflow-y: scroll;
+  background-color: #f1f2fd;
+}
+
+#blinkingText {
+  /* Animated blinking effect using CSS animation */
+  animation: blinkText 1s infinite;
+}
+
+@keyframes blinkText {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+/* Improved website title design with CSS */
+h1 {
+  font-family: sans-serif;
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #007bff;
+}
+</style>
+</head>
+<body>
+<h1>Simple Executor (HTML)</h1>
+<div id="blinkingText">Write here...</div>
+<textarea id="editor"></textarea>
+<button onclick="runHTML()">Run</button>
+<div id="preview"></div>
+
+<script>
+function runHTML() {
+  // Sanitize code here before using it! (Remember security best practices)
+  let code = document.getElementById("editor").value;
+  let container = document.getElementById("preview");
+  container.innerHTML = code;
+}
+
+// Improved blinking text functionality using JavaScript
+let originalText = "Write here...";
+let blinkingText = document.getElementById("blinkingText");
+let i = 0;
+const typingSpeed = 50;
+const characterCount = originalText.length;
+
+function typeWriter() {
+  if (i < characterCount) {
+    blinkingText.textContent = originalText.slice(0, i + 1);
+    i++;
+    setTimeout(typeWriter, typingSpeed);
+  } else {
+    // Start blinking effect after typing completion
+    blinkingText.textContent = originalText;
+  }
+}
+
+// Start typing animation on page load
+window.onload = typeWriter;
+</script>
+</body>
+</html>
